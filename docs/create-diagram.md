@@ -1,20 +1,92 @@
 import ThemedImage from '../src/components/ThemedImage';
+import Flex from '../src/components/Flex';
 
 # Create a diagram
 
-You can create custom diagrams for MySQL, PostgreSQL, SQLite, MariaDB, or SQL Server. 
+To begin, go to the [online editor](https://www.drawdb.app/editor). If a previous digram gets loaded you can go to `File > New` and pick the blank diagram option.
+
+<Flex>
+<ThemedImage 
+    lightImageSrc={require("./img/light/file-new.png").default}
+    darkImageSrc={require("./img/dark/file-new.png").default}
+    alt="New File"
+/>
+<ThemedImage 
+    lightImageSrc={require("./img/light/create-blank-diagram.png").default}
+    darkImageSrc={require("./img/dark/create-blank-diagram.png").default}
+    alt="Create a blank diagram"
+/>
+</Flex>
+
+### Pick a database
+
+You can create custom or generic diagrams. Generic diagrams can be imported from or exported to any of the supported SQL flavors(MySQL, PostgreSQL, MariaDB, SQLite, MSSQL), however, they support a fewer number of types. On the other hand, custom diagrams support all the types in the given SQL flavor.
 
 <ThemedImage 
-    lightImageSrc="/img/logo.png"
-    darkImageSrc="/img/docusaurus.png"
+    lightImageSrc={require("./img/light/pick-db.png").default}
+    darkImageSrc={require("./img/dark/pick-db.png").default}
+    alt="Pick a database"
 />
-
-### Create a new blank diagram
 
 ### Define tables
 
+Add tables either from the sidebar or the toolbar and define columns.
+
+<ThemedImage 
+    lightImageSrc={require("./img/light/define-tables.gif").default}
+    darkImageSrc={require("./img/dark/define-tables.gif").default}
+    alt="Define tables"
+/>
+
 ### Create relationships
+
+To create relationships and define foreign keys start, click and hold the blue dot of the foreign key and drag and drop it on the primary column. Creating relationships follows the `start_col REFERENCES end_col` logic, so the column you start dragging from will become a foreign key.
+
+
+<ThemedImage 
+    lightImageSrc={require("./img/light/create-relationship.gif").default}
+    darkImageSrc={require("./img/dark/create-relationship.gif").default}
+    alt="Create a relationship"
+/>
+
+
+<Flex>
+<div>
+E.g. in the image above, since `posts.user_id` is the foreign key we start dragging from `user_id` to `users.id`.
+
+If at some point you realize that the keys are flipped you can swap them from the `Relationships` tab. Open the relationship you'd like to edit, click on the more button next to the primary and forign columns, and then swap.
+</div>
+<ThemedImage 
+    lightImageSrc={require("./img/light/swap-keys.png").default}
+    darkImageSrc={require("./img/dark/swap-keys.png").default}
+    alt="Swap keys"
+/>
+</Flex>
 
 ### Organize with subject areas
 
+You add subject areas from the `Subject Areas` tab in the sidebar or from the toolbar. They logically group the tables in subject areas to make it easier to navigate the diagram; they server a pure visual purpose and do not translate to any SQL logic and are not reflected in the generated scripts.
+
 ### Add notes
+
+You add notes from the `Notes` tab in the sidebar or from the toolbar. You can use notes to capture any additional comments in the diagram.
+
+### Custom Types
+
+If the diagram type supports custom types there will be an additional `Types` tab in the sidebar. In generic diagrams the following conversions will take place when exporing to SQL.
+
+
+| **Database**        | **Behavior**                                         |
+|---------------------|------------------------------------------------------|
+| **MySQL/MariaDB**   | A JSON with the corresponding JSON validation check  |
+| **PostgreSQL**      | A composite type                                     |
+| **SQLite**          | BLOB                                                 |
+| **MSSQL**           | A type alias to the first field                      |
+
+Upon adding a new type, it will be added to the list of types you can choose from when editing a column.
+
+### Define Enums (PostgreSQL)
+
+If the diagram is for PostgreSQL there will be an additional `Enums` tab in the sidebar where you can define enum values. Upon adding a new enum, it will be added to the list of types you can choose from when editing a column.
+
+

@@ -1,5 +1,7 @@
 .flex {
   display: flex;
+  justify-items: start;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
 }
