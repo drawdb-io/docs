@@ -13,7 +13,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://drawdb-io.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -21,9 +21,11 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'drawdb-io', // Usually your GitHub org/user name.
-  projectName: 'drawdb', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  trailingSlash: false,
+
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -77,7 +79,8 @@ const config = {
             href: 'https://github.com/drawdb-io/drawdb',
             label: 'GitHub',
             position: 'right',
-          },          {
+          },
+          {
             href: 'https://x.com/drawdb_',
             label: 'Twitter',
             position: 'right',
@@ -92,7 +95,7 @@ const config = {
             items: [
               {
                 label: 'Docs',
-                to: '/docs/intro',
+                to: '/intro',
               },
             ],
           },
