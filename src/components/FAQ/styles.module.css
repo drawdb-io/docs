@@ -1,0 +1,30 @@
+.faq {
+  background-color: #53a6ca4a;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.faq__char {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  opacity: 0.6;
+}
+
+.faq__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faq__header__text {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.faq__body {
+  margin-top: 20px;
+  display: flex;
+  align-items: start;
+  gap: 12px;
+}
