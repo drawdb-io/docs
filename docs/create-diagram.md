@@ -2,8 +2,8 @@
 sidebar_position: 2
 ---
 
-import ThemedImage from '../src/components/ThemedImage'; 
-import Flex from '../src/components/Flex'; 
+import ThemedImage from '../src/components/ThemedImage';
+import Flex from '../src/components/Flex';
 import FAQ from '../src/components/FAQ';
 
 # Create a diagram
