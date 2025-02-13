@@ -1,4 +1,10 @@
-import ThemedImage from '../src/components/ThemedImage'; import Flex from '../src/components/Flex'; import FAQ from '../src/components/FAQ';
+---
+sidebar_position: 2
+---
+
+import ThemedImage from '../src/components/ThemedImage'; 
+import Flex from '../src/components/Flex'; 
+import FAQ from '../src/components/FAQ';
 
 # Create a diagram
 
@@ -32,15 +38,23 @@ The following databases are supported:
 - MariaDB
 - MSSQL
 
-<ThemedImage lightImageSrc={require("./img/light/pick-db.png").default} darkImageSrc={require("./img/dark/pick-db.png").default} alt="Pick a database" />
+<ThemedImage
+    lightImageSrc={require("./img/light/pick-db.png").default}
+    darkImageSrc={require("./img/dark/pick-db.png").default}
+    alt="Pick a database"
+/>
 
-## Define tables
+## Tables
 
 Add tables either from the sidebar or the toolbar and define columns.
 
-<ThemedImage lightImageSrc={require("./img/light/define-tables.gif").default} darkImageSrc={require("./img/dark/define-tables.gif").default} alt="Define tables" />
+<ThemedImage
+    lightImageSrc={require("./img/light/define-tables.gif").default} 
+    darkImageSrc={require("./img/dark/define-tables.gif").default} 
+    alt="Define tables"
+/>
 
-### Columns
+### Table Fields
 
 You can define the following fields for a column:
 
@@ -54,23 +68,35 @@ You can define the following fields for a column:
 - Check constraint
 - Comment
 
-:::info 
+:::info
 
-If multiple primary keys are defined a composite primary key will be generated in the SQL output. 
-
-:::
-
-:::info 
-
-The check constraint will be injected into the SQL output as is. 
+If multiple primary keys are defined a composite primary key will be generated in the SQL output.
 
 :::
 
-## Create relationships
+:::info
+
+The check constraint will be injected into the SQL output as is.
+
+:::
+
+### Indexes
+
+You can define the following fields for an index:
+
+- Fields
+- Unique
+- Name
+
+## Relationships
 
 To create relationships and define foreign keys, click and hold the blue dot on the foreign key column, then drag and drop it onto the primary column. This action follows the logic of `start_col REFERENCES end_col`, where the column you drag from will be designated as the foreign key, linking it to the primary key in the destination column.
 
-<ThemedImage lightImageSrc={require("./img/light/create-relationship.gif").default} darkImageSrc={require("./img/dark/create-relationship.gif").default} alt="Create a relationship" />
+<ThemedImage
+    lightImageSrc={require("./img/light/create-relationship.gif").default}
+    darkImageSrc={require("./img/dark/create-relationship.gif").default}
+    alt="Create a relationship"
+/>
 
 E.g. in the image above, since `posts.user_id` is the foreign key we start dragging from `user_id` to `users.id`.
 
@@ -101,11 +127,11 @@ A join table is a third table that contains foreign keys to the 2 tables you'd l
 
 </FAQ>
 
-## Organize with subject areas
+## Subject areas
 
 You add subject areas from the `Subject Areas` tab in the sidebar or from the toolbar. They logically group the tables in subject areas to make it easier to navigate the diagram; they server a pure visual purpose and do not translate to any SQL logic and are not reflected in the generated scripts.
 
-## Add notes
+## Notes
 
 You add notes from the `Notes` tab in the sidebar or from the toolbar. You can use notes to capture any additional comments in the diagram.
 
@@ -122,6 +148,6 @@ If the diagram type supports custom types there will be an additional `Types` ta
 
 Upon adding a new type, it will be added to the list of types you can choose from when editing a column.
 
-## Define Enums (PostgreSQL)
+## Enums (PostgreSQL)
 
 If the diagram is for PostgreSQL there will be an additional `Enums` tab in the sidebar where you can define enum values. Upon adding a new enum, it will be added to the list of types you can choose from when editing a column.
