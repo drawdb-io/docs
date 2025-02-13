@@ -9,13 +9,18 @@
 }
 
 .card:hover {
-  color: var(--color-1);
+  background-color: var(--color-2);
+  transition: all ease-in-out 300ms;
 }
 
 .card__title {
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card__body {
   font-size: small;
+  opacity: 0.8;
 }
