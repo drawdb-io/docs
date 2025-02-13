@@ -30,8 +30,8 @@ While secret gists are not visible to search engines they are still visible if s
 
 :::
 
-To learn more about gists, please, refer to the [GitHub Documentation](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists).
+To learn more about gists please refer to the [GitHub Documentation](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists).
 
 In case you want to delete a gist, you can click the `Unshare` button.
 
-Additionally, the gist does not get synced with your working diagram unless you re-share.
+Additionally, the gist does not get synced with your working diagram unless you re-share by clicking the `Share` button again.
