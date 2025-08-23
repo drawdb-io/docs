@@ -28,3 +28,5 @@ sidebar_position: 7
 | Wheel up / Wheel down | Scroll vertically |  |
 | SHIFT+Wheel up / SHIFT+Wheel down | Scroll horizontally |  |
 | CTRL+H | Open shortcuts |  |
+| CTRL+BACKSPACE / COMMAND+BACKSPACE | Delete word before cursor |  |
+| ALT+CLICK | Select multiple elements | If you want to select multiple elements, hold down the ALT key while clicking on them. |
