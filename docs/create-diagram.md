@@ -11,12 +11,12 @@ import FAQ from '../src/components/FAQ';
 To begin, go to the [online editor](https://www.drawdb.app/editor). If a previous digram gets loaded you can go to `File > New` and pick the blank diagram option.
 
 <Flex>
-<ThemedImage 
+<ThemedImage
     lightImageSrc={require("./img/light/file-new.png").default}
     darkImageSrc={require("./img/dark/file-new.png").default}
     alt="New File"
 />
-<ThemedImage 
+<ThemedImage
     lightImageSrc={require("./img/light/create-blank-diagram.png").default}
     darkImageSrc={require("./img/dark/create-blank-diagram.png").default}
     alt="Create a blank diagram"
@@ -37,6 +37,9 @@ The following databases are supported:
 - SQLite
 - MariaDB
 - MSSQL
+- Oracle
+
+For the momment the import SQL diagram has not enable for Oracle Data Base.
 
 <ThemedImage
     lightImageSrc={require("./img/light/pick-db.png").default}
@@ -49,8 +52,8 @@ The following databases are supported:
 Add tables either from the sidebar or the toolbar and define columns.
 
 <ThemedImage
-    lightImageSrc={require("./img/light/define-tables.gif").default} 
-    darkImageSrc={require("./img/dark/define-tables.gif").default} 
+    lightImageSrc={require("./img/light/define-tables.gif").default}
+    darkImageSrc={require("./img/dark/define-tables.gif").default}
     alt="Define tables"
 />
 
