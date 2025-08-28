@@ -23,6 +23,7 @@ You can customize editor settings in the `View` menu.
 | Reset view | Set the canvas cooridantes and zoom to default | Ctrl+R |
 | Show grid | Toggle the canvas grid | Ctrl+Shift+G |
 | Show cardinality | Toggle showing cardinality labels(1, n) for relationships | N/A |
+| Notation | Set notation style for relationships | N/A |
 | Show relationship labels | Toggle showing relationship names on the diagram | N/A |
 | Show debug coordinates | Display debug coordinate information | N/A |
 | Theme | Set the editor theme to dark or light | N/A |
