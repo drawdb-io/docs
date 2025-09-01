@@ -20,5 +20,6 @@ These settings are saved in the local storage and are applied to all your diagra
 | Autosave | Disable / enable autosaving changes. |
 | Panning | Disable / enable moving the canvas. |
 | Table width | Set the width of tables. |
+| Defaults | Set default field values and type sizes for new fields. |
 | Language | Set UI language. |
 | Flush storage | This permanently deletes all the diagrams and templates from IndexedDB. |
