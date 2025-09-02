@@ -8,20 +8,20 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'drawDB DOCS',
-  tagline: 'Dinosaurs are cool',
+  title: 'drawDB (by LIDSoL) DOCS',
+  tagline: 'LIDSoL Rules',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://drawdb-io.github.io',
+  url: 'https://lidsol.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: '/drawdb-docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'drawdb-io', // Usually your GitHub org/user name.
-  projectName: 'docs', // Usually your repo name.
+  organizationName: 'LIDSOL', // Usually your GitHub org/user name.
+  projectName: 'drawdb-docs', // Usually your repo name.
 
   trailingSlash: false,
 
