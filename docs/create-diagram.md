@@ -83,6 +83,12 @@ The check constraint will be injected into the SQL output as is.
 
 :::
 
+:::info
+
+You can create attributes sequentially by pressing enter in the last field.
+
+:::
+
 ### Indexes
 
 You can define the following fields for an index:
