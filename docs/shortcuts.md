@@ -27,4 +27,4 @@ sidebar_position: 7
 | CTRL+DOWN / CTRL+Wheel down | Zoom out |  |
 | Wheel up / Wheel down | Scroll vertically |  |
 | SHIFT+Wheel up / SHIFT+Wheel down | Scroll horizontally |  |
-| CTRL+H | Open shortcuts |  |
+| CTRL+H | Open docs |  |
