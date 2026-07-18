@@ -1,0 +1,51 @@
+---
+title: drawDB Pro documentation
+description: Learn drawDB Pro cloud storage, workspaces, sharing, live collaboration, version history, AI, API keys, MCP, and billing.
+---
+
+drawDB Pro adds cloud-backed workflows to the open-source diagram editor. You keep the same canvas, SQL dialects, imports, exports, and shortcuts while gaining accounts, cloud diagrams, public links, AI assistance, versions, and integrations.
+
+<Cards>
+  <Card title="Get started with Pro" href="/pro/getting-started">
+    Sign in, understand personal and team workspaces, and move your first diagram to the cloud.
+  </Card>
+  <Card title="Share and collaborate" href="/pro/sharing-permissions">
+    Create public links or manage team access to a cloud diagram.
+  </Card>
+  <Card title="Use the AI assistant" href="/pro/ai-assistant">
+    Generate and edit tables, columns, relationships, notes, and subject areas from a prompt.
+  </Card>
+  <Card title="Connect an MCP client" href="/pro/mcp">
+    Let compatible AI coding tools inspect your cloud schemas through a read-only integration.
+  </Card>
+</Cards>
+
+## Choose the right workflow
+
+| Capability | Pro Solo | Pro Team |
+| --- | :---: | :---: |
+| Cloud diagrams and sync | ✓ | ✓ |
+| Public read-only links | ✓ | ✓ |
+| AI schema assistant | ✓ | ✓ |
+| Manual version history and migrations | ✓ | ✓ |
+| API keys and MCP | ✓ | ✓ |
+| Team workspaces and roles | — | ✓ |
+| Per-diagram team permissions | — | ✓ |
+| Live collaboration | — | ✓ |
+
+Plan availability and pricing can change. Use the [current pricing page](https://www.drawdb.app/pricing) and **Settings → Billing** as the source of truth for your account.
+
+## Pro concepts
+
+- **Local diagram:** stored in the current browser. It can be edited without an account but is not available to Pro integrations.
+- **Cloud diagram:** stored in the workspace selected when it is created or uploaded. Cloud diagrams enable Pro sharing, versions, team collaboration, and MCP.
+- **Personal workspace:** the private workspace associated with a Solo account.
+- **Team workspace:** a shared container with Admin and Member roles. It enables team permissions and live collaboration.
+- **Public link:** an unauthenticated, view-only URL for one cloud diagram.
+- **API key:** a user-owned secret that authenticates MCP and the read-only schema API.
+
+Core modeling behavior is documented in [Create a database diagram](/create-diagram), [Customize the editor](/customizing-editor), and [Keyboard shortcuts](/shortcuts).
+
+<Callout title="Cloud features need a saved diagram" type="info">
+  Pro sharing, version history, collaboration, and MCP work from the cloud copy. AI can also operate on an open local diagram for an eligible signed-in account; its schema is still sent to the AI service as context.
+</Callout>

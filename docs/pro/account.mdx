@@ -1,0 +1,67 @@
+---
+title: Account, profile, and sign-in
+description: Sign in to drawDB with email, Google, or GitHub; troubleshoot verification codes; and manage your Pro profile.
+---
+
+drawDB supports passwordless email codes, Google, and GitHub. The same account can belong to personal and team workspaces.
+
+## Sign in with email
+
+1. Open the account menu and select **Sign in**.
+2. Enter your email and select **Continue with email**.
+3. Enter the six-digit numeric code from the message.
+
+The form submits automatically when all six digits are entered. Use **Use a different email** to restart with another address.
+
+The **Resend code** action becomes available after 60 seconds. A newly requested code replaces the previous active code.
+
+<Callout title="Verification-code limits" type="info">
+  Codes expire and stop working after repeated incorrect attempts. If a code is expired or exhausted, request a new one. Authentication requests are also rate-limited, so wait before retrying repeatedly.
+</Callout>
+
+## Sign in with Google or GitHub
+
+Select **Continue with Google** or **Continue with GitHub** on the sign-in page. The provider account must supply a verified email address. GitHub sign-in specifically needs a verified primary email.
+
+If the provider reports an expired or invalid sign-in link, return to drawDB and begin the sign-in flow again.
+
+## Complete onboarding
+
+New users may be asked about their role, institution, intended use, and how they found drawDB. These questions personalize the experience and can be skipped.
+
+If you selected a Team plan, drawDB asks you to name a team before opening its workspace.
+
+## Open account settings
+
+In the editor, select your avatar and then **Manage account**. The Settings dialog contains:
+
+- **Account:** profile, plan summary, and log out
+- **Teams:** workspaces, members, invitations, and roles
+- **API keys:** integration credentials
+- **Integrations:** MCP setup entry point
+- **Community:** drawDB community and support links
+- **Billing:** plan and subscription controls, when you are allowed to manage them
+
+## Update your profile
+
+In **Settings → Account**:
+
+- Edit **Display name** and move focus away from the field to save it.
+- Review the account email. It cannot currently be edited from this screen.
+- Select the avatar pencil to manage the image through Gravatar.
+- Review the current plan and open Billing when available.
+- Select **Log out** to end the browser session.
+
+Your display name and profile color are used in team lists and collaboration presence.
+
+## Common sign-in problems
+
+| Problem | Resolution |
+| --- | --- |
+| The email did not arrive | Check spam, confirm the address, wait for the resend timer, then request a new code. |
+| The code is incorrect or expired | Request a new code; only the latest active code should be used. |
+| Too many attempts | Wait before requesting or verifying another code. |
+| GitHub has no verified primary email | Verify a primary email in GitHub or use another sign-in method. |
+| The OAuth link expired | Restart sign-in from drawDB instead of reusing the old callback URL. |
+| An invite opens the wrong account | Log in with the exact email address that received the invitation. |
+

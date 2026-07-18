@@ -1,0 +1,38 @@
+---
+title: Share an OSS diagram
+description: Share a drawDB OSS diagram as a private GitHub Gist snapshot, configure an embed link, and understand how shared copies work.
+---
+
+The open-source drawDB editor can publish a snapshot of a diagram and give you a link that others can open.
+
+## Create a share link
+
+1. Open the diagram.
+2. Select `Share` in the menubar.
+3. Copy the generated link.
+
+The URL includes a `shareId` query parameter. When a recipient opens it, drawDB downloads the snapshot and saves a local copy in that browser.
+
+<Callout title="Sharing is not live collaboration">
+  An OSS share link transfers a snapshot. It does not let recipients edit your local diagram and does not start a real-time collaboration session. drawDB Pro provides team permissions and live collaboration separately.
+</Callout>
+
+## How snapshots work
+
+Sharing creates a private GitHub Gist containing the diagram JSON. Opening Share again after making changes refreshes the published snapshot. The recipient's local copy does not remain synchronized with your diagram.
+
+<Callout title="Private does not mean encrypted" type="warn">
+  Private Gists are not listed publicly, but anyone who obtains the URL may be able to access its contents. Do not place secrets or production credentials in a shared diagram.
+</Callout>
+
+Use `Unshare` to invalidate the currently published snapshot from the editor.
+
+## Configure an embed link
+
+The Share dialog can also generate an embed-friendly URL. Its options let you:
+
+- Choose the initial light or dark theme.
+- Hide the menubar, sidebar, or toolbar.
+- Force those controls to remain hidden for viewers.
+
+For general information about Gists, see the [GitHub Gist documentation](https://docs.github.com/en/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists).

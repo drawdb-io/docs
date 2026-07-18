@@ -1,0 +1,79 @@
+---
+title: Plans, trials, seats, and billing
+description: Compare drawDB Pro Solo and Team capabilities, manage Paddle billing, understand team seats, cancel a subscription, and recover expired access.
+---
+
+drawDB separates personal cloud features from team collaboration. Current prices and entitlements are loaded dynamically, so use the [pricing page](https://www.drawdb.app/pricing) and **Settings → Billing** for account-specific details.
+
+## Compare plans
+
+| Capability | Free | Pro Solo | Pro Team |
+| --- | :---: | :---: | :---: |
+| Local diagrams and core editor | ✓ | ✓ | ✓ |
+| Cloud storage and sync | — | ✓ | ✓ |
+| Public read-only sharing | — | ✓ | ✓ |
+| AI assistant | — | ✓ | ✓ |
+| Version history and migrations | — | ✓ | ✓ |
+| API keys and MCP | — | ✓ | ✓ |
+| Team workspaces, roles, and permissions | — | — | ✓ |
+| Live collaboration | — | — | ✓ |
+
+<Callout title="Feature availability follows the live plan" type="info">
+  Plan features can change independently of this documentation. The pricing page and the plan summary in your account are authoritative for a purchase decision.
+</Callout>
+
+## Start a plan or trial
+
+Choose a plan from Pricing and sign in when prompted. New paid-plan signups may enter a trial before checkout. The exact trial period is shown in the product for the current offer.
+
+Team-plan onboarding asks you to name a team workspace. Team pricing is displayed per user.
+
+## Complete checkout
+
+Checkout is embedded through Paddle and uses the signed-in account email. After payment, drawDB waits for the billing confirmation before enabling the plan.
+
+Activation usually completes automatically. If the success page remains on **Activating your plan…**:
+
+1. Wait for the full activation check.
+2. Refresh the account or reopen the editor.
+3. Check **Settings → Billing**.
+4. Contact support if the plan still has not appeared.
+
+Avoid submitting a second payment while the first activation is still pending.
+
+## Open Billing
+
+Select your avatar, choose **Manage account**, and open **Billing**.
+
+Billing shows the current plan, trial or renewal state, included features, and subscriptions attached to workspaces you administer. Because subscriptions are workspace-scoped, only an Admin of the plan-owning workspace can manage that subscription.
+
+## Team seats
+
+Pro Team is billed per active seat. Adding or removing an active member updates the Paddle subscription quantity and may cause an immediate prorated adjustment.
+
+Manage seats from **Settings → Teams**. Before removing someone, confirm whether their integrations or responsibilities need to be transferred. The last Admin cannot be removed or demoted.
+
+## Cancel a subscription
+
+An eligible Admin can open a subscription's action menu and choose **Cancel subscription**. Cancellation is scheduled for the end of the current billing period rather than immediately.
+
+- Pro access continues through the displayed end date.
+- Billing marks the subscription as ending.
+- At period end, the workspace returns to its non-Pro state unless it is resubscribed.
+
+Use **Resubscribe** before the end date to retain uninterrupted access.
+
+## When a trial or plan ends
+
+Cloud diagrams are retained rather than deleted. The workspace becomes read-only for Pro write features:
+
+- Existing accessible diagrams can still be opened.
+- Schema edits and cloud writes are disabled.
+- Sharing changes, AI, new API keys, and live editing are unavailable.
+- Existing API keys can still be listed and revoked, but the read-only schema API requires active cloud entitlement.
+- Upgrading restores writable Pro features without recreating the diagrams.
+
+## Billing limitations
+
+The current Settings UI does not provide invoice history, payment-method editing, arbitrary plan switching, or a general customer-portal link. Contact drawDB support when a billing task is not offered in **Settings → Billing**.
+

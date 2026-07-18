@@ -1,0 +1,79 @@
+---
+title: Share Pro diagrams and manage permissions
+description: Share drawDB Pro cloud diagrams with public links, team audiences, default access, and per-member view or edit permissions.
+---
+
+Pro sharing controls who can open a cloud diagram and whether signed-in team members can edit it.
+
+## Before sharing
+
+A diagram must:
+
+- Be saved to the cloud.
+- Contain at least one table.
+- Be managed by the creator or a team Admin if sharing settings need to change.
+
+When sharing controls are disabled, first confirm the diagram is labeled **Cloud** and is not empty.
+
+## Share from Pro Solo
+
+Pro Solo creates a public, view-only URL. Anyone with the URL can open the diagram without signing in.
+
+1. Open **Share**.
+2. Wait for the public link to be created.
+3. Select **Copy link**.
+
+Use **Revoke link** when a URL may have been exposed or should no longer work. drawDB invalidates the old token and immediately prepares a replacement link.
+
+## Share from Pro Team
+
+Team diagrams support three link audiences:
+
+| Audience | Behavior |
+| --- | --- |
+| **Invite only** | Only members with an effective individual permission can open it. See the current limitation below. |
+| **Everyone in the team** | Signed-in workspace members use the diagram's default access. |
+| **Anyone with the link** | The public URL opens without an account and is always view-only. |
+
+For non-public audiences, **Copy link** copies the normal diagram URL. The recipient must sign in and have the required team and diagram access.
+
+## Set the team default
+
+For **Everyone in the team**, choose the default access:
+
+- **Can view:** members can inspect but not edit.
+- **Can edit:** members can change the diagram and participate in live collaboration.
+- **No access:** members need individual access before opening it.
+
+Use the member list to grant or revoke access for a specific teammate. Available choices are **Can view**, **Can edit**, and **Revoke access**.
+
+<Callout title="Current individual Can view limitation" type="warn">
+  In the current release, an individual **Can view** selection does not create a read override when the audience is **Invite only** or the team default is **No access**. It falls back to the audience/default instead. Use **Can edit** for individual Invite-only access, or use a team-wide **Can view** default or public read-only link when editing is not appropriate.
+</Callout>
+
+The diagram creator and team Admins retain management access while they remain members of the diagram's workspace.
+
+<Callout title="Permissions apply only to team members" type="info">
+  Per-person permissions cannot target an arbitrary external user. Invite the person to the team first, or use a public view-only link.
+</Callout>
+
+## View-only behavior
+
+A view-only member can open the cloud diagram and inspect its sharing state, but cannot change the schema, permissions, or public-link settings. View-only access also does not permit joining a live editing room.
+
+Public-link visitors receive the same read-only diagram experience without account or team access.
+
+## Manage access from the diagram list
+
+The creator and team Admins can open **File → Open** and use the access action on a cloud row. This is useful when the diagram does not need to be opened before permissions are changed.
+
+## Secure a public link
+
+A public link is a bearer URL: possession of the link is enough to view the diagram.
+
+- Do not include passwords, credentials, or production secrets in a diagram.
+- Revoke and replace a link after accidental disclosure.
+- Switch the audience away from public when anonymous access is no longer needed.
+- Remember that previously downloaded or captured information cannot be recalled.
+
+For simultaneous editing, continue with [Live collaboration](/pro/live-collaboration).

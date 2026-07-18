@@ -1,0 +1,67 @@
+---
+title: Version history and schema migrations
+description: Record, preview, restore, compare, and delete drawDB Pro cloud versions, and generate up and down SQL migrations.
+---
+
+Version history creates manual checkpoints for a cloud diagram. Use it before a large schema change, a collaboration session, or a restore.
+
+## Open version history
+
+Open a saved cloud diagram and select the branch/history icon. If the diagram has not reached the cloud yet, save or move it first.
+
+History is loaded 20 versions at a time. Select **Load more** to reach older checkpoints.
+
+## Record a version
+
+1. Select **Record version**.
+2. Review the JSON comparison with the most recent version.
+3. Add an optional message of up to 200 characters.
+4. Select **Create**.
+
+drawDB flushes pending cloud edits before it records the checkpoint. Creation is disabled when the schema has not changed, and identical snapshots are not duplicated.
+
+<Callout title="Versions are manual" type="info">
+  Current Pro behavior does not create automatic checkpoints. Record one explicitly whenever you need a recoverable milestone.
+</Callout>
+
+## Preview an older version
+
+Select a history entry or choose **Preview** from its action menu. The canvas switches to a read-only representation of that version and shows a persistent **Back to current** control.
+
+Previewing does not change the current cloud diagram. Select **Back to current** before resuming edits.
+
+## Restore a version
+
+Users with edit access can choose **Restore this version**. Restoration replaces the current cloud diagram with the selected snapshot.
+
+<Callout title="Protect the current state first" type="warn">
+  Record the current diagram as a manual version before restoring. Do not rely on restore to create an automatic backup of the state it replaces.
+</Callout>
+
+After restoration, reload completes and the selected schema becomes the current diagram.
+
+## Generate a migration
+
+Choose **Generate migration** from a version's action menu. Migration generation is currently **Beta**.
+
+The comparison includes:
+
+- Read-only up SQL
+- Read-only down SQL
+- A JSON schema diff
+- A downloadable ZIP containing the SQL files
+
+The selected version is compared with the next older version currently loaded in the history panel. Before generating around a pagination boundary, select **Load more** so the correct older baseline is present.
+
+Generic diagrams can show the JSON diff but cannot generate SQL migration scripts. SQL generation is available for supported concrete database dialects.
+
+Migration comparison focuses on schema structure. Canvas positions, zoom, title, notes, subject areas, and other presentation state are not part of the generated SQL diff.
+
+<Callout title="Review generated SQL" type="warn">
+  Migration output is a starting point. Review types, constraints, destructive changes, data backfills, and database-specific behavior before applying it to a real database.
+</Callout>
+
+## Delete a version
+
+The diagram creator and team Admins can select **Delete** from a version's action menu. This permanently removes that checkpoint. Other users with read access can preview versions, while edit access is required to record or restore them.
+

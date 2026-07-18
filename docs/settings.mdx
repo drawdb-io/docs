@@ -1,0 +1,27 @@
+---
+title: General settings
+description: Configure drawDB autosave, table width, language, custom datatypes, local backups, cache, and browser-stored diagram data.
+---
+
+Open the `Settings` menu to change preferences that apply across diagrams in the open-source editor. These settings are stored in the browser's local storage.
+
+## Available settings
+
+| Setting | What it does |
+| --- | --- |
+| Show timeline | Displays the undo history for the current editing session. |
+| Autosave | Enables or disables automatic diagram saving. |
+| Table width | Sets the default width used to render tables. |
+| Language | Changes the editor interface language. |
+| Configure custom types | Creates local datatype aliases available while editing fields. |
+| Export saved data | Downloads a backup of locally stored drawDB data. |
+| Clear cache | Clears cached application data used by the editor. |
+| Flush storage | Permanently removes locally saved diagrams and templates from IndexedDB. |
+
+<Callout title="Back up before clearing storage" type="warn">
+  Export any diagrams and templates you want to keep before flushing storage or clearing browser site data. Browser-local data does not automatically follow you to another browser or device.
+</Callout>
+
+## Settings versus diagram data
+
+Editor preferences and custom datatype aliases are stored in local storage. Diagrams and custom templates are stored separately in IndexedDB. Clearing one storage area may not clear the other.

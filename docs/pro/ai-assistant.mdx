@@ -1,0 +1,82 @@
+---
+title: Use the drawDB AI schema assistant
+description: Prompt drawDB Pro AI to create and edit tables, columns, relationships, notes, and subject areas in a saved cloud diagram.
+---
+
+The AI schema assistant turns natural-language requests into changes on the open diagram. It can explain its work and call editor tools while the response streams.
+
+## Open the assistant
+
+Open an existing diagram with a saved diagram ID, then:
+
+- Select **Ask AI**, or
+- Press `Ctrl/Cmd + Shift + K`.
+
+The assistant needs a signed-in account with active cloud entitlement. It can operate on either a cloud diagram or an existing browser-local diagram. A brand-new canvas without a saved diagram ID, a signed-out session, or a read-only plan state cannot send AI requests.
+
+<Callout title="Local diagrams are still sent as AI context" type="warn">
+  Using Ask AI on a Local diagram sends its current schema and your prompt to the AI service even though the diagram itself remains browser-local. Move it to the cloud only when you want cloud persistence and other cloud-only features.
+</Callout>
+
+## What the assistant can change
+
+The current tool set can:
+
+- Create, rename, recolor, describe, and delete tables.
+- Add, update, and delete columns.
+- Create, update, and delete relationships.
+- Add, update, and delete notes.
+- Add, update, and delete subject areas.
+
+It does not currently have tools for enums, custom composite types, account settings, team membership, sharing permissions, versions, billing, or MCP configuration.
+
+## Write effective prompts
+
+Describe the goal, database rules, and constraints. For example:
+
+> Add customers, orders, and order items for PostgreSQL. Use UUID primary keys, timestamptz audit fields, a unique customer email, and restrictive foreign-key deletes.
+
+For an existing schema, name the affected tables and ask the assistant to preserve unrelated elements:
+
+> Add soft deletion to users and organizations. Use deleted_at, keep current keys and relationships, and explain every change before finishing.
+
+Useful follow-ups include:
+
+- “Suggest relationships between my existing tables.”
+- “Add created_at and updated_at to every business table.”
+- “Normalize this order model and explain the tradeoffs.”
+- “Group billing tables into a subject area and add a note describing the boundary.”
+
+Press `Enter` to send and `Shift + Enter` for a new line.
+
+## Review tool calls
+
+Tool calls can modify the diagram as they arrive; there is no separate approval step for each change. Watch the canvas and the tool summaries in the conversation.
+
+After a response:
+
+1. Check names, types, nullability, defaults, and keys.
+2. Inspect every created relationship and referential action.
+3. Confirm the result matches the selected database dialect.
+4. Record a [manual version](/pro/version-history) once the result is accepted.
+
+<Callout title="AI can make mistakes" type="warn">
+  Treat generated schema changes as a draft. Validate them before exporting or applying migration SQL.
+</Callout>
+
+## Diagram context and conversation state
+
+The current diagram schema is included as context when you send a request. Do not put credentials, private keys, or production secrets in table comments, notes, prompts, or other diagram text.
+
+Assistant conversation state belongs to the current frontend session and is not saved as diagram version history. Refreshing or leaving the editor may discard it; record important decisions elsewhere.
+
+## Troubleshooting
+
+| Message or symptom | Resolution |
+| --- | --- |
+| “Open a saved diagram to use the assistant.” | Save the new canvas as a local or cloud diagram so it has an ID, then retry. |
+| **Sign up to use** | Sign in before sending a request. |
+| **Upgrade to use** | The account does not currently have writable cloud access. Review Billing. |
+| The response stopped | Retry with a shorter prompt after checking the network. |
+| The assistant changed the wrong element | Stop making further changes, inspect the schema, and restore from a manual version if necessary. |
+| A requested enum or custom type was not created | Those schema elements are not supported by the current AI tool set; create them manually. |

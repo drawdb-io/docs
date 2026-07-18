@@ -1,0 +1,96 @@
+---
+title: Troubleshoot drawDB Pro
+description: Resolve common drawDB Pro sign-in, cloud save, workspace, invitation, sharing, collaboration, AI, billing, API key, and MCP problems.
+---
+
+Start with the symptom below. Preserve an exported diagram before attempting recovery steps that could replace or delete data.
+
+## Account and verification
+
+| Symptom | What to do |
+| --- | --- |
+| Verification email did not arrive | Confirm the address, check spam, wait for **Resend code**, and request a new code. |
+| Code is expired or incorrect | Use only the newest code. Request another after the timer if needed. |
+| Too many verification attempts | Stop retrying and wait for the authentication limit to reset. |
+| OAuth link expired or was rejected | Return to drawDB and start sign-in again. Do not reuse the callback URL. |
+| GitHub sign-in reports no verified email | Add and verify a primary email in GitHub, or use email/Google sign-in. |
+
+See [Account, profile, and sign-in](/pro/account).
+
+## Cloud diagrams and access
+
+### The diagram is still Local
+
+Open it while signed in and select **Move** in the cloud banner. Confirm the intended workspace first and wait for the completed save state.
+
+### Cloud saving failed
+
+Keep the tab open, check the network, and retry a small edit. Export the diagram locally if the error persists. Do not assume an unsaved change reached the cloud.
+
+### The diagram is view-only
+
+Your member permission or current plan does not permit writes. Ask the creator or a team Admin for **Can edit**, or review **Settings → Billing** when the entire workspace is read-only.
+
+### The diagram belongs to a team you no longer belong to
+
+Ask a team Admin to invite the correct account again. Cloud access follows current workspace membership.
+
+## Sharing
+
+| Symptom | What to do |
+| --- | --- |
+| Share controls say the diagram is not saved | Move it to the cloud and wait for the save. |
+| Share controls say the diagram is empty | Add at least one table. |
+| A normal copied link denies access | Confirm the recipient is signed in, belongs to the team, and has diagram access. |
+| A public link should stop working | Revoke or disable public sharing; copy the replacement only to intended viewers. |
+| A member cannot edit | Change their permission to **Can edit** and confirm the diagram's audience permits access. |
+
+See [Share Pro diagrams and manage permissions](/pro/sharing-permissions).
+
+## Team invitations
+
+| Error | Resolution |
+| --- | --- |
+| Invitation expired or was revoked | Ask an Admin to create a fresh invitation. |
+| Sign in with the invited email | Log out and use the exact destination address. |
+| Already a member | Switch workspaces instead of accepting again. |
+| Team trial seat limit reached | Revoke an unused pending invitation or remove an unused member. |
+| Invitation email was not delivered | Revoke the pending invitation and invite the address again. |
+
+## Live collaboration
+
+- **Amber dot:** wait for the first cloud save or connection attempt.
+- **Red—feature required:** Team Pro collaboration is not active for this workspace.
+- **Red—forbidden:** the account lacks edit permission.
+- **Red—not in cloud storage:** save or move the diagram first.
+- **Red—network/server:** reload once after checking connectivity; normal cloud editing may still work.
+
+See [Live collaboration](/pro/live-collaboration).
+
+## Versions and AI
+
+| Symptom | What to do |
+| --- | --- |
+| **Record version** is unavailable | Save the diagram to the cloud and confirm you have edit access and an active Pro plan. |
+| “You have no changes to save.” | The current schema matches the latest recorded version. |
+| Migration has no SQL | Generic diagrams support JSON comparison only, or there are no structural schema changes. |
+| AI says to open a saved diagram | Save the new canvas as a local or cloud diagram so it has an ID. |
+| AI requests are locked | Sign in or restore active cloud access. |
+
+## Billing activation
+
+If checkout remains pending, let the activation check finish, reopen the editor, and inspect **Settings → Billing**. Do not repeat checkout until you know the first payment failed. Contact support if activation still does not appear.
+
+## API keys and MCP
+
+Common MCP errors are documented in [Connect drawDB to AI tools with MCP](/pro/mcp#troubleshooting-mcp). For a lost or exposed token, create a replacement, update the client, verify it, then [delete the old key](/pro/api-keys#revoke-a-key).
+
+## Contact support
+
+Open the account Settings dialog and use **Community** for available drawDB links. When reporting a problem, include:
+
+- The workspace and diagram name, but not an API key or private share token.
+- The exact visible error message.
+- Whether the diagram is Local or Cloud.
+- Your browser and operating system.
+- The approximate time the issue occurred.

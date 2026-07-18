@@ -1,0 +1,132 @@
+---
+title: Create a database diagram
+description: Create a drawDB diagram, add tables and fields, define indexes and relationships, and export a database schema.
+---
+
+import fileNewLight from './img/light/file-new.png';
+import fileNewDark from './img/dark/file-new.png';
+import createBlankLight from './img/light/create-blank-diagram.png';
+import createBlankDark from './img/dark/create-blank-diagram.png';
+import pickDbLight from './img/light/pick-db.png';
+import pickDbDark from './img/dark/pick-db.png';
+import defineTablesLight from './img/light/define-tables.gif';
+import defineTablesDark from './img/dark/define-tables.gif';
+import createRelationshipLight from './img/light/create-relationship.gif';
+import createRelationshipDark from './img/dark/create-relationship.gif';
+import manyToManyLight from './img/light/many-to-many.png';
+import manyToManyDark from './img/dark/many-to-many.png';
+
+Open the [online editor](https://www.drawdb.app/editor). To replace the currently loaded diagram, choose `File → New`, then select a blank diagram or template.
+
+<div className="image-grid">
+  <ThemedImage
+    lightSrc={fileNewLight}
+    darkSrc={fileNewDark}
+    alt="The File menu with New highlighted"
+  />
+  <ThemedImage
+    lightSrc={createBlankLight}
+    darkSrc={createBlankDark}
+    alt="The New diagram dialog with the blank diagram option"
+  />
+</div>
+
+## Choose a database
+
+Select the database dialect that matches your target:
+
+- Generic
+- MySQL
+- PostgreSQL
+- SQLite
+- MariaDB
+- Microsoft SQL Server
+- Oracle SQL (Beta)
+
+Database-specific diagrams provide the dialect's native types and features. Generic diagrams use a portable type set and can be exported to multiple SQL dialects.
+
+<ThemedImage
+  lightSrc={pickDbLight}
+  darkSrc={pickDbDark}
+  alt="Database selection options in drawDB"
+/>
+
+## Add tables and fields
+
+Add a table from the sidebar or toolbar, give it a name, and define its fields.
+
+<ThemedImage
+  lightSrc={defineTablesLight}
+  darkSrc={defineTablesDark}
+  alt="Adding fields to a table in drawDB"
+/>
+
+For each field, you can configure:
+
+- Name and datatype
+- Primary, unique, and not-null constraints
+- Autoincrement where supported
+- Default value and check constraint
+- Comment
+- Array dimensions in PostgreSQL
+- Unsigned numeric types in MySQL and MariaDB
+
+<Callout title="Composite primary keys">
+  Mark multiple fields as primary to generate a composite primary key in SQL output.
+</Callout>
+
+<Callout title="Check constraints" type="warn">
+  Check expressions are inserted into generated SQL as written. Use syntax supported by the target database.
+</Callout>
+
+### Indexes and unique constraints
+
+Indexes can contain one or more fields and can be named or unique. Tables can also define named, multi-field unique constraints. PostgreSQL diagrams additionally support table inheritance.
+
+## Create relationships
+
+Drag from the blue connection point on the foreign-key field to the referenced field. The field types must be compatible. drawDB infers relationship cardinality from primary and unique constraints, and you can adjust it afterward.
+
+<ThemedImage
+  lightSrc={createRelationshipLight}
+  darkSrc={createRelationshipDark}
+  alt="Creating a relationship between posts.user_id and users.id"
+/>
+
+In the example, `posts.user_id` references `users.id`. Open the Relationships tab to change the relationship name, swap its foreign and primary sides, configure one or more field pairs, and set labels for the many side.
+
+Both `ON DELETE` and `ON UPDATE` support:
+
+- No action
+- Restrict
+- Cascade
+- Set null
+- Set default
+
+<Accordions type="single">
+  <Accordion title="How do I model a many-to-many relationship?">
+    Use a join table containing foreign keys to the two related tables. The join table can also store relationship-specific fields.
+
+    <ThemedImage
+      lightSrc={manyToManyLight}
+      darkSrc={manyToManyDark}
+      alt="A many-to-many relationship modeled through a join table"
+    />
+  </Accordion>
+</Accordions>
+
+## Organize the canvas
+
+### Subject areas
+
+Add subject areas from the sidebar or toolbar to visually group related tables. Subject areas improve navigation but do not generate SQL.
+
+### Notes
+
+Use notes to capture requirements, decisions, or reminders directly on the diagram.
+
+## Custom types and enums
+
+PostgreSQL and Generic diagrams expose a Types tab for diagram-defined composite types. PostgreSQL diagrams also expose an Enums tab. After creating a type or enum, it becomes available when selecting a field datatype.
+
+The Settings menu also lets you configure local custom datatype aliases. These aliases are saved in the browser and are distinct from diagram-defined composite types.

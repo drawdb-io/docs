@@ -1,0 +1,64 @@
+---
+title: Live collaboration in drawDB Pro
+description: Collaborate on Team Pro cloud diagrams with presence, live cursors, relationship previews, automatic connection, and access controls.
+---
+
+Live collaboration lets eligible Team Pro members edit the same cloud diagram together. It starts automatically when the diagram opens—there is no separate collaboration toggle.
+
+## Requirements
+
+Every collaborator needs:
+
+- Membership in the diagram's team workspace.
+- **Can edit** access to the diagram.
+- A Team Pro workspace with live collaboration enabled.
+- A cloud-backed diagram rather than a local diagram or template.
+
+Pro Solo, view-only members, and public-link visitors do not join the live editing room.
+
+## What collaborators see
+
+- Presence avatars for other connected users.
+- Remote cursors moving on the canvas.
+- Relationship lines while another person is connecting fields.
+- Schema changes as peers create, update, or delete supported diagram elements.
+
+Each browser continues saving the shared diagram to the cloud. The live service relays operations and presence; it does not replace cloud persistence.
+
+## Connection status
+
+The dot on your avatar shows the live-session state:
+
+| Color | Meaning |
+| --- | --- |
+| Green | Live collaboration is connected. |
+| Amber | drawDB is connecting or waiting for the diagram's first cloud save. |
+| Red | Collaboration is unavailable because of access, plan, network, or service configuration. |
+
+Hover over the dot for a more specific message.
+
+## Start a session
+
+1. Open a saved diagram in a Team workspace.
+2. Confirm your permission is **Can edit**.
+3. Wait for the avatar dot to turn green.
+4. Share the normal diagram URL with another team member who has edit access.
+
+A newly created diagram may stay amber until its first cloud write creates the shared record.
+
+## How persistence works
+
+Connected peers exchange operations immediately. A peer also provides the current scene to someone joining an active room. Each editor then saves the resulting document through the normal cloud-save path.
+
+When two people change the same element at nearly the same time, the last persisted write can determine the stored result. Coordinate destructive or large schema changes and record a [manual version](/pro/version-history) first.
+
+## Troubleshoot the status dot
+
+- **Included in your current plan:** Team Pro is required; refresh the account after a plan change.
+- **You do not have edit access:** ask the creator or a team Admin for **Can edit**.
+- **Diagram is not in cloud storage:** move or save the diagram and wait for the first write.
+- **Cannot reach the collaboration service:** check the network, reload once, and retry.
+- **Server unavailable or not configured:** normal cloud editing may still work, but live presence will not. Try again later or contact support.
+
+If the dot remains amber after the diagram shows a completed cloud save, reload the diagram before escalating the issue.
+

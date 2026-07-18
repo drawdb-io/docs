@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+@theme {
+  --color-fd-background: hsl(210, 40%, 98%);
+  --color-fd-foreground: hsl(218, 34%, 13%);
+  --color-fd-muted: hsl(210, 32%, 94%);
+  --color-fd-muted-foreground: hsl(215, 16%, 42%);
+  --color-fd-popover: hsl(0, 0%, 100%);
+  --color-fd-popover-foreground: hsl(218, 34%, 13%);
+  --color-fd-card: hsl(0, 0%, 100%);
+  --color-fd-card-foreground: hsl(218, 34%, 13%);
+  --color-fd-border: hsla(210, 22%, 72%, 0.48);
+  --color-fd-primary: #0a83c0;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-secondary: hsl(204, 55%, 93%);
+  --color-fd-secondary-foreground: hsl(202, 84%, 25%);
+  --color-fd-accent: hsla(201, 83%, 46%, 0.13);
+  --color-fd-accent-foreground: hsl(202, 86%, 28%);
+  --color-fd-ring: #0a83c0;
+}
+
+.dark {
+  --color-fd-background: hsl(219, 30%, 8%);
+  --color-fd-foreground: hsl(210, 24%, 94%);
+  --color-fd-muted: hsl(218, 24%, 13%);
+  --color-fd-muted-foreground: hsl(215, 16%, 67%);
+  --color-fd-popover: hsl(218, 26%, 11%);
+  --color-fd-popover-foreground: hsl(210, 24%, 94%);
+  --color-fd-card: hsl(218, 26%, 10%);
+  --color-fd-card-foreground: hsl(210, 24%, 94%);
+  --color-fd-border: hsla(210, 28%, 72%, 0.17);
+  --color-fd-primary: #43b3ea;
+  --color-fd-primary-foreground: hsl(219, 35%, 9%);
+  --color-fd-secondary: hsl(205, 36%, 17%);
+  --color-fd-secondary-foreground: hsl(201, 75%, 82%);
+  --color-fd-accent: hsla(199, 78%, 58%, 0.15);
+  --color-fd-accent-foreground: hsl(199, 82%, 76%);
+  --color-fd-ring: #43b3ea;
+}
+
+:root {
+  --fd-layout-width: 1440px;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0 !important;
+  --removed-body-scroll-bar-size: 0 !important;
+}
+
+body {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-fd-primary) 28%, transparent);
+}
+
+.drawdb-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 730;
+  letter-spacing: -0.02em;
+}
+
+.drawdb-brand img {
+  border-radius: 0.45rem;
+}
+
+.drawdb-brand__suffix {
+  color: var(--color-fd-primary);
+}
+
+.themed-image {
+  display: block;
+  margin-block: 1.5rem;
+}
+
+.themed-image img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 0.9rem;
+  box-shadow:
+    0 1px 2px hsla(218, 34%, 13%, 0.05),
+    0 12px 36px hsla(204, 70%, 25%, 0.08);
+}
+
+.themed-image__dark {
+  display: none;
+}
+
+.dark .themed-image__light {
+  display: none;
+}
+
+.dark .themed-image__dark {
+  display: block;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-block: 1.5rem;
+}
+
+.image-grid .themed-image {
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+}

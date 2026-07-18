@@ -1,0 +1,67 @@
+---
+title: How drawDB works
+description: Understand drawDB's React architecture, SVG canvas, browser storage, SQL and DBML imports, exports, sharing, and localization.
+---
+
+The open-source drawDB editor is a React application built with Vite. It keeps editor state in React Context providers rather than a separate Redux or Zustand store.
+
+## Editor canvas
+
+The canvas is an SVG surface driven by pointer events. Tables, subject areas, and much of each note are rendered through SVG `foreignObject` elements. Relationships are SVG paths calculated from the positions and dimensions of their connected fields.
+
+This structure lets drawDB combine familiar HTML controls with a zoomable and pannable diagram surface.
+
+## Browser persistence
+
+OSS diagrams and custom templates are stored in IndexedDB through Dexie. Editor preferences, custom datatype aliases, and version cache information are stored in local storage.
+
+Because this data belongs to a specific browser profile, export important diagrams before clearing site data, resetting the browser, or moving to another device.
+
+## Sharing
+
+The OSS Share action publishes the current diagram JSON as a private GitHub Gist. A shared URL loads that snapshot and creates a local copy for the recipient. It is not a live synchronization channel.
+
+## Imports
+
+drawDB can import:
+
+- drawDB JSON and DDB files
+- DBML
+- SQL for MySQL, PostgreSQL, SQLite, MariaDB, Microsoft SQL Server, and Oracle SQL
+
+SQL source is parsed into an abstract syntax tree and then converted into drawDB tables, fields, indexes, enums, types, and relationships where the source dialect provides enough information.
+
+## Exports
+
+The editor can export diagrams as:
+
+- SQL
+- PNG, JPEG, SVG, and PDF
+- drawDB JSON
+- DBML
+- Mermaid
+- Markdown
+
+SQL output uses dialect-specific generators. Image and document formats use the rendered diagram and dedicated serialization or export libraries.
+
+## Internationalization
+
+Interface strings live under `src/i18n/locales` in the drawDB repository. Adding a language requires:
+
+1. Creating a translated locale file based on [en.js](https://github.com/drawdb-io/drawdb/blob/main/src/i18n/locales/en.js).
+2. Importing the locale in `src/i18n/i18n.js`.
+3. Adding it to the language list.
+4. Registering it in the i18next resources map.
+
+## Pro architecture
+
+drawDB Pro layers authentication, teams, cloud diagram storage, permissions, billing, AI tools, and real-time collaboration around the same core editor. Those services are separate from the browser-local OSS persistence and Gist sharing described above.
+
+<Cards>
+  <Card title="Explore the source" href="https://github.com/drawdb-io/drawdb">
+    Browse the editor components, contexts, importers, exporters, and localization files.
+  </Card>
+  <Card title="Read the sharing guide" href="/share">
+    Learn exactly what an OSS share link publishes and how recipients load it.
+  </Card>
+</Cards>

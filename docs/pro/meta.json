@@ -1,0 +1,20 @@
+{
+  "title": "drawDB Pro",
+  "description": "Guides for drawDB Pro accounts, cloud diagrams, collaboration, AI, API keys, and MCP.",
+  "defaultOpen": true,
+  "pages": [
+    "index",
+    "getting-started",
+    "account",
+    "cloud-diagrams",
+    "teams",
+    "sharing-permissions",
+    "live-collaboration",
+    "version-history",
+    "ai-assistant",
+    "plans-billing",
+    "api-keys",
+    "mcp",
+    "troubleshooting"
+  ]
+}

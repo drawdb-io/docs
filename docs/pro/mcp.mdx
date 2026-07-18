@@ -1,0 +1,135 @@
+---
+title: Connect drawDB to AI tools with MCP
+description: Configure the read-only drawDB MCP server so Claude Desktop, Cursor, Cline, Goose, Windsurf, and compatible clients can inspect cloud schemas.
+---
+
+The drawDB Model Context Protocol (MCP) server gives compatible AI coding tools read-only access to the database schemas stored in your drawDB Pro cloud workspaces.
+
+It runs locally as a Node.js child process, authenticates to the drawDB API with your API key, and exposes focused tools for diagrams, tables, fields, relationships, enums, and PostgreSQL composite types.
+
+<Callout title="Read-only by design" type="info">
+  MCP cannot create, change, export, restore, or delete diagrams. It does not expose notes, subject areas, canvas layout, SQL export, or DBML export.
+</Callout>
+
+## Before you begin
+
+You need:
+
+- A drawDB plan with cloud storage and at least one cloud-backed diagram.
+- Node.js 20 or newer installed on the computer running your MCP client.
+- An MCP client that can launch a local `stdio` server.
+- A drawDB API key. Follow [Create and manage API keys](/pro/api-keys) first.
+
+The published npm package is `@drawdb/mcp`. It connects to `https://api.drawdb.app` by default.
+
+## Configure your MCP client
+
+Add a local stdio server using this configuration:
+
+```json
+{
+  "mcpServers": {
+    "drawdb": {
+      "command": "npx",
+      "args": ["-y", "@drawdb/mcp"],
+      "env": {
+        "DRAWDB_API_KEY": "ddb_your_key_here"
+      }
+    }
+  }
+}
+```
+
+Replace `ddb_your_key_here` with the token shown when you created the key. Keep the key inside the `env` object for the drawDB server entry.
+
+Claude Desktop, Cursor, Cline, Goose, Windsurf, and other clients that launch local MCP processes can use the same command, arguments, and environment variable. The screen or configuration-file location is client-specific; look for an option to add a **local** or **stdio** MCP server.
+
+Restart or reload the client using its normal MCP-server workflow, then confirm that a server named `drawdb` and its tools are available.
+
+<Callout title="Web-only clients are not supported yet" type="warn">
+  The current package uses local stdio transport. It cannot be connected directly to web-only ChatGPT or claude.ai sessions because drawDB does not yet expose the hosted HTTP and OAuth transport those clients require.
+</Callout>
+
+## Test the connection
+
+Try this prompt in your MCP client:
+
+> List my drawDB diagrams, then summarize the schema of the diagram named “Orders”.
+
+The agent should call `list_diagrams` first, select the returned diagram ID, and reuse that ID for schema tools.
+
+To test the API independently of an MCP client, place your key in an environment variable and run:
+
+```bash
+curl --fail-with-body \
+  -H "X-API-Key: $DRAWDB_API_KEY" \
+  https://api.drawdb.app/api/v1/diagrams
+```
+
+## Available tools
+
+| Tool | Required parameters | What it returns |
+| --- | --- | --- |
+| `list_diagrams` | None | Diagram IDs, names, database dialects, and update times visible across the key owner's team memberships |
+| `get_schema_summary` | `diagram_id` | Dialect, counts, and table names |
+| `list_tables` | `diagram_id` | Table names, comments, and field counts |
+| `describe_table` | `diagram_id`, `table_name` | Columns, constraints, defaults, comments, enum values, and indices |
+| `list_relationships` | `diagram_id` | Foreign keys, cardinality, referential actions, and composite-column mappings |
+| `describe_relationship` | `diagram_id`, `from_table`, `to_table` | Relationships in the specified direction between two tables |
+| `list_enums` | `diagram_id` | User-defined enum names and values |
+| `list_custom_types` | `diagram_id` | PostgreSQL composite types and their fields |
+| `search_tables` | `diagram_id`, `query` | Matching table or column names and comments |
+
+Table names passed to `describe_table` are case-insensitive but must otherwise match the complete table name. Relationship lookup is directional: `from_table` and `to_table` must follow the direction reported by `list_relationships`.
+
+`search_tables` can return the same table more than once when several columns or comments match the query.
+
+## What an API key can see
+
+The MCP process runs as the user who created its key. It is not limited to the workspace currently selected in the drawDB editor.
+
+- `list_diagrams` searches cloud-diagram metadata across all of that user's team memberships. In the current release, it can include a diagram whose schema request is later denied by Invite-only or No-access rules.
+- Each schema request performs a fresh access check.
+- Explicitly revoked access, leaving a team, key expiration, or key deletion stops future access.
+- Local browser diagrams are not uploaded automatically and cannot be discovered by MCP.
+
+Use a separate key for each device or client so that you can revoke one connection without interrupting the others.
+
+## Connect to a self-hosted backend
+
+`DRAWDB_BASE_URL` is optional. Set it only when you are developing against another drawDB API deployment:
+
+```json
+{
+  "mcpServers": {
+    "drawdb-local": {
+      "command": "npx",
+      "args": ["-y", "@drawdb/mcp"],
+      "env": {
+        "DRAWDB_API_KEY": "ddb_your_key_here",
+        "DRAWDB_BASE_URL": "http://localhost:4000"
+      }
+    }
+  }
+}
+```
+
+## Troubleshooting MCP
+
+| Symptom | What to check |
+| --- | --- |
+| `set DRAWDB_API_KEY env var before launching` | The client did not pass the key. Confirm that `env` is inside the drawDB server entry. |
+| `npx` or Node cannot be found | Install Node.js 20+ and ensure the desktop client can access it through its process `PATH`. |
+| `401 missing api key` | `DRAWDB_API_KEY` did not reach the process. |
+| `401 invalid api key format` | The value must begin with `ddb_`; an editor session token will not work. |
+| `401 invalid or expired api key` | The key expired, was deleted, was copied incorrectly, or its full value was lost. Create a replacement. |
+| `402 cloud_storage requires a Pro plan` | The account no longer has the cloud-storage entitlement. Review the plan or trial status. |
+| No diagrams are returned | Confirm the diagram is saved to the cloud and the key owner still belongs to its workspace. |
+| `400 Invalid diagramId` | Call `list_diagrams` and use its UUID instead of a diagram name. |
+| `403 not your diagram` | The summary can be listed, but the key owner does not pass the diagram's current schema-access check. |
+| `404 diagram not found` | The diagram was deleted or the ID is incorrect. |
+| `Table not found` | Call `list_tables` and pass the complete table name. |
+| `No relationships from A to B` | Reverse lookups do not match. Use the direction returned by `list_relationships`. |
+| Recent edits are missing | Wait for drawDB's cloud save to finish, then query the diagram again. |
+
+If a key may have been exposed, [rotate it immediately](/pro/api-keys#rotate-a-key).

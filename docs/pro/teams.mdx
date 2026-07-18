@@ -1,0 +1,89 @@
+---
+title: Teams, roles, and invitations
+description: Create and switch drawDB Pro team workspaces, manage Admin and Member roles, invite teammates, and understand seat behavior.
+---
+
+Pro Team organizes cloud diagrams inside shared workspaces. Each workspace has its own members, roles, diagrams, permissions, and subscription context.
+
+## Personal and team workspaces
+
+- A **personal workspace** is private and cannot invite members.
+- A **team workspace** supports members, roles, diagram permissions, and live collaboration.
+
+Use the workspace control beside the diagram title to change the active editing workspace. Use **Settings → Teams** to inspect or administer a workspace without changing the editor's current diagram.
+
+## Team roles
+
+| Capability | Admin | Member |
+| --- | :---: | :---: |
+| View team details | ✓ | ✓ |
+| Open diagrams allowed by their permissions | ✓ | ✓ |
+| Rename the team | ✓ | — |
+| Invite people and revoke invitations | ✓ | — |
+| Change member roles | ✓ | — |
+| Remove members | ✓ | — |
+| Manage every diagram in the team | ✓ | — |
+| Manage the team subscription and seats | ✓ | — |
+
+The final Admin cannot be demoted or removed. Assign another Admin first if responsibility needs to change.
+
+## Invite a teammate
+
+An Admin can invite someone from **Settings → Teams** or from a diagram's Share panel.
+
+1. Open the team workspace in **Settings → Teams**.
+2. Enter the person's email address.
+3. Choose **Member** or **Admin**, when that role selector is available.
+4. Send the invitation.
+
+Invitations expire after seven days and are bound to the invited email address. The recipient must sign in with that exact address.
+
+<Callout title="A Share-panel invite joins the team" type="info">
+  Inviting an email from a diagram's Share panel is a workspace invitation, not access to only that one diagram. Configure the person's diagram permission separately after they join.
+</Callout>
+
+## Accept an invitation
+
+The recipient can accept from the emailed link. Pending invitations also appear in **Settings → Teams**, with a badge on the Teams tab.
+
+After acceptance, drawDB switches into the joined workspace and opens its latest diagram, or a blank canvas when the team is empty.
+
+If acceptance fails:
+
+- **Invitation expired or revoked:** ask an Admin to create a new invitation.
+- **Wrong email:** sign out and use the invited address.
+- **Already a member:** switch to the workspace instead of accepting again.
+- **Invitation not found:** ask for a fresh link.
+
+There is no resend action for an existing invitation. Revoke it and invite the address again when delivery fails.
+
+## Manage members
+
+In **Settings → Teams**, an Admin can:
+
+- Rename the team.
+- Promote a Member to Admin.
+- Demote an Admin when another active Admin remains.
+- Remove a member.
+- Revoke a pending invitation.
+
+Removing a member immediately removes their access to that team's diagrams. Review diagram permissions and active integrations before removing someone.
+
+## Seats and billing
+
+Team plans are billed per active seat. Adding or removing an active member updates the subscription quantity and may create an immediate prorated adjustment through Paddle.
+
+During a team trial, active members and pending invitations count toward the trial's seat limit. Revoke an unused invitation before inviting someone else when the team is at that limit.
+
+See [Plans, trials, and billing](/pro/plans-billing) for subscription management.
+
+## Switch workspaces
+
+Select the current workspace beside the diagram title and choose another entry. drawDB:
+
+1. Changes the active workspace used for cloud requests.
+2. Opens the selected workspace's most recently modified diagram.
+3. Opens a blank canvas instead when the workspace has no accessible diagrams.
+
+Confirm the workspace before creating a new diagram or moving a local one to the cloud.
+

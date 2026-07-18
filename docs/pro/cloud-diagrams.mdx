@@ -1,0 +1,66 @@
+---
+title: Cloud diagrams and workspaces
+description: Understand local and cloud drawDB diagrams, cloud autosave, workspace scoping, opening files, moving diagrams, and read-only access.
+---
+
+drawDB can show browser-local and cloud-backed diagrams in the same editor. Knowing which copy is open prevents sharing and access surprises.
+
+## Local and cloud diagrams
+
+| | Local | Cloud |
+| --- | --- | --- |
+| Storage | Current browser | Selected drawDB workspace |
+| Account required | No | Yes |
+| Available on another device | No | Yes, with access |
+| Public sharing | OSS snapshot sharing only | Pro public links and team access |
+| Version history and MCP | No | Yes, with an eligible plan |
+| AI assistant | Yes, for an eligible signed-in account | Yes, with an eligible plan |
+| Live collaboration | No | Team cloud diagrams only |
+
+Use **File → Open** to browse both sources. The list identifies Local and Cloud items and provides search, sorting, database, source, and ownership filters.
+
+## Move a local diagram to the cloud
+
+Open the local diagram and select **Move** in the cloud prompt. drawDB uploads it to the active workspace before switching the editor to the cloud copy.
+
+Wait for the completed save state before closing the tab. If the write fails, the local diagram remains the recovery source.
+
+## How cloud saving behaves
+
+Cloud changes are saved in sequence. When edits happen quickly, drawDB combines pending work rather than sending overlapping writes. The **Last saved** value is updated only after the cloud write completes.
+
+If a write is still pending when you try to leave, the browser may warn you. Remain on the page until the save completes when possible.
+
+<Callout title="Export important diagrams too" type="info">
+  Cloud storage protects against browser-data loss, but an exported JSON or DDB copy is still useful before large changes, access changes, or account transitions.
+</Callout>
+
+## Workspace scoping
+
+The active workspace controls:
+
+- Which cloud diagrams appear in the normal list.
+- Where new cloud diagrams are created.
+- Which workspace's most recent diagram opens after switching.
+- Which team membership and sharing rules apply.
+
+A diagram belongs to its workspace, not permanently to its original creator. If the creator later leaves that team, access follows the remaining team membership and permissions.
+
+## Open a cloud diagram
+
+- Opening `/editor` while signed in returns to the most recently modified accessible cloud diagram.
+- **File → Open** lets you select another diagram and inspect its source and owner.
+- Switching workspaces opens that workspace's most recent diagram or a blank canvas if the workspace is empty.
+- Opening a direct diagram URL also synchronizes the active workspace when you still belong to it.
+
+## Read-only cloud access
+
+A diagram opens read-only when your permission is **Can view** or your plan no longer permits cloud writes.
+
+In read-only mode, you can inspect the diagram, but write-dependent actions such as saving changes, changing sharing settings, using AI, creating API keys, or joining a live editing room are unavailable.
+
+If a trial or subscription ends, existing cloud data is retained. Restoring an eligible plan makes writable features available again.
+
+## Delete a cloud diagram
+
+The diagram creator and team admins can manage and delete a cloud diagram while they remain members of its workspace. Deletion removes the diagram for everyone with access, so export a backup first when the schema may be needed later.

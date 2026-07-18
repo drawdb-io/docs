@@ -1,0 +1,73 @@
+---
+title: Get started with drawDB Pro
+description: Sign in to drawDB Pro, complete onboarding, choose a workspace, and save or move a database diagram to the cloud.
+---
+
+You can start modeling without an account and sign in only when you need a cloud feature. Pro uses the same editor as the open-source experience, so existing modeling and import workflows still apply.
+
+## 1. Sign in
+
+Open the [drawDB editor](https://www.drawdb.app/editor), select the account avatar, and choose **Sign in**. Continue with:
+
+- Google
+- GitHub
+- Email and a six-digit verification code
+
+New accounts are guided through a short, optional onboarding flow. Team-plan signups also name their first team workspace.
+
+See [Account and sign-in](/pro/account) for verification-code and OAuth help.
+
+## 2. Understand your workspace
+
+A cloud diagram always belongs to one workspace.
+
+- A **personal workspace** is intended for your own Pro Solo diagrams.
+- A **team workspace** contains diagrams shared with that team's members.
+
+If your account belongs to more than one workspace, use the workspace control next to the diagram title. Switching workspaces opens that workspace's most recently modified diagram, or a blank canvas when it has no diagrams yet.
+
+<Callout title="Workspace selection affects new diagrams" type="warn">
+  Confirm the active workspace before creating or importing a diagram. The cloud diagram is saved into that workspace and access follows its membership.
+</Callout>
+
+## 3. Create or import a diagram
+
+Create a blank diagram, start from a template, or import SQL, DBML, JSON, or DDB. Follow [Create a database diagram](/create-diagram) for the complete editor workflow.
+
+When you are signed in with active cloud access, newly saved diagrams are stored in the active workspace. The editor tracks the completed cloud write and shows the latest save state.
+
+## 4. Move an existing local diagram
+
+When a browser-local diagram is open, drawDB shows:
+
+> This diagram is stored locally on your browser. Move it to the cloud?
+
+Select **Move**. drawDB uploads the diagram, switches the open document to its cloud copy, and enables cloud-only features after the write succeeds.
+
+You can also use **File → Open** to see local and cloud diagrams together. The source label and filters help distinguish them.
+
+## 5. Verify the cloud copy
+
+Before sharing or connecting an integration:
+
+1. Wait for the save indicator to complete.
+2. Open **File → Open** and confirm the diagram is labeled **Cloud**.
+3. Confirm the workspace shown beside the diagram title is the intended one.
+
+You can now continue with:
+
+<Cards>
+  <Card title="Share the diagram" href="/pro/sharing-permissions">
+    Publish a view-only link or configure team access.
+  </Card>
+  <Card title="Record a version" href="/pro/version-history">
+    Create a named schema checkpoint and generate migration SQL.
+  </Card>
+  <Card title="Ask AI" href="/pro/ai-assistant">
+    Create or modify schema elements with natural-language prompts.
+  </Card>
+  <Card title="Connect MCP" href="/pro/mcp">
+    Make the saved schema available to compatible coding agents.
+  </Card>
+</Cards>
+

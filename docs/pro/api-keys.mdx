@@ -1,0 +1,68 @@
+---
+title: Create and manage drawDB API keys
+description: Create, rename, rotate, expire, and revoke drawDB Pro API keys for MCP clients and other integrations.
+---
+
+API keys let scripts and integrations act as your drawDB account. The current read-only API is used by the [drawDB MCP server](/pro/mcp).
+
+<Callout title="Treat keys like passwords" type="warn">
+  A key can discover cloud-diagram metadata across your team memberships and can read schemas that pass a fresh access check. Never commit a key to source control, paste it into chat, or share it with another person.
+</Callout>
+
+## Create a key
+
+1. Open the drawDB editor and sign in.
+2. Select your avatar, then **Manage account**.
+3. Open **API keys**.
+4. Select **Create key**.
+5. Give it a recognizable name, such as `MCP on work laptop`.
+6. Choose an expiration: 30, 60, or 90 days; one year; or no expiration.
+7. Create the key and copy the complete token immediately.
+
+New keys default to a 30-day expiration. Names can contain up to 80 characters.
+
+<Callout title="The token is shown once" type="warn">
+  drawDB stores a hash rather than the complete token. If you close the creation dialog without saving it, create a replacement key; the original value cannot be recovered.
+</Callout>
+
+Keys begin with `ddb_`. The API keys table later shows only a short prefix, expiration date, and last-used date so you can identify the key without exposing it.
+
+## Rename a key
+
+Use the action menu next to a key and select **Edit**. Renaming changes only the label—it does not rotate the token or change its expiration.
+
+## Rotate a key
+
+Use this sequence to replace a key without interrupting an integration:
+
+1. Create a replacement key.
+2. Update every client that uses the old key.
+3. Confirm the replacement can connect.
+4. Delete the old key.
+
+## Revoke a key
+
+1. Open the key's action menu and select **Delete**.
+2. Type `DELETE` in the confirmation dialog.
+3. Select **Delete key**.
+
+Deletion takes effect immediately. Every client still configured with that key will stop authenticating.
+
+## Understand key access
+
+API keys are attached to your user account—not to the active workspace in the editor.
+
+- `list_diagrams` can expose IDs, names, dialects, and update times across every team you belong to. In the current release, that list can include a diagram whose schema read is later denied by Invite-only or No-access rules.
+- Changing the active workspace does not scope the key to that workspace.
+- Every schema request performs a fresh permission check; removing access blocks the schema even when its summary still appears in the list.
+- Local-only OSS diagrams are not available through the API.
+- Creating or renaming keys requires an active plan with cloud storage.
+- You can still delete a key after a plan or trial ends.
+
+For least-privilege access, use a dedicated drawDB account with membership only in the workspaces the integration needs.
+
+## Choose an expiration
+
+Prefer the shortest practical lifetime. Non-expiring keys reduce maintenance but increase the impact of an unnoticed leak. The **Last used** value can help you identify abandoned keys before revoking them.
+
+Continue with [Connect drawDB to AI tools with MCP](/pro/mcp).
